@@ -1,0 +1,44 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 100vw;
+  padding: 0 20px;
+}
+
+.product-carousel {
+  display: flex;
+  gap: 25px; /* Decreased the gap */
+  padding: 0 5px 0 5px !important;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hides scrollbar for a cleaner look */
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 320px !important; /* Adjust based on design */
+  text-align: center;
+  margin: 0; /* Ensures no extra spacing */
+  padding: 0; /* Ensures no extra padding */
+}
+
+.product-img {
+  width: 100%;
+  height: 500px !important;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-title {
+  font-size: 20px !important;
+  font-weight: 600;
+  margin-top: 15px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}

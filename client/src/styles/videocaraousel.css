@@ -1,0 +1,167 @@
+.josefin-sans-josefin {
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.video-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px;
+  width: 100%;
+  overflow: visible; /* Allow full shadow visibility */
+}
+
+/* Video Wrapper */
+.video-wrapper {
+  position: absolute;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.4),
+    0px -10px 20px rgba(0, 0, 0, 0.3), 10px 0px 30px rgba(0, 0, 0, 0.35),
+    -10px 0px 30px rgba(0, 0, 0, 0.35);
+}
+
+.video-wrapper.active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Covers the bottom half */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  z-index: 4; /* Ensure it's above the video */
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* Add Dark Overlay on Non-Active Videos */
+.video-wrapper:not(.active)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for exact darkness */
+  z-index: 4; /* Ensures overlay is above the video */
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* Ensure Video Stays in Frame */
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+}
+ 
+
+
+/* Active Video */
+.video-wrapper.active {
+  height: 500px;
+  width: 280px;
+  z-index: 10;
+  box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.3); /* Stronger, blurrier shadow */
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.video-wrapper.active video {
+  transition: filter 0.6s ease-in-out;
+}
+
+/* Left & Right Positions */
+.video-wrapper.position--2,
+.video-wrapper.position-2 {
+  height: 300px;
+  width: 150px;
+  z-index: 2;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); /* Lighter shadow for side items */
+}
+
+.video-wrapper.position--1,
+.video-wrapper.position-1 {
+  height: 420px;
+  width: 180px;
+  z-index: 3;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Positioning for 5 items */
+.video-wrapper.position--2 {
+  transform: translateX(-250px);
+}
+.video-wrapper.position--1 {
+  transform: translateX(-150px);
+}
+.video-wrapper.position-0 {
+  transform: translateX(0px);
+}
+.video-wrapper.position-1 {
+  transform: translateX(150px);
+}
+.video-wrapper.position-2 {
+  transform: translateX(250px);
+}
+
+/* Navigation Buttons */
+.prev-btn,
+.next-btn {
+  background-color: black;
+  position: absolute;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Position the buttons inside the carousel with a gap from the center images */
+.prev-btn {
+  left: 12%; /* Adjust this value as needed */
+}
+
+.next-btn {
+  right: 12%; /* Adjust this value as needed */
+}
+
+/* Hover Effects */
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: rgb(81, 81, 81);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure Mute Button is on Top */
+.mute-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5; /* Ensure it's above the overlay */
+}
+
+.hidden {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
